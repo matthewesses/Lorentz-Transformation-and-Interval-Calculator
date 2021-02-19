@@ -1,4 +1,5 @@
 import numpy as np
+#edit the variables to get the correct values
 x=2.4*10**8 #meters for moving reference frame
 t=1 #seconds for moving reference frame
 y=0 #meters
