@@ -32,11 +32,11 @@ elif x==None and tp==None:
 I=x**2+(c*t)**2+y**2+z**2 #the value for the interval
 
 #prints the values
-print("Distance x : ",x,"meters")
+print("Distance x: ",x,"meters")
 print("Time t:", t,"seconds")
-print("Velocity is:", v, "meters/second")
+print("Velocity is", v, "meters/second")
 print("Beta is",B)
 print("Gamma is", gamma)
 print("The interval is", I, "meters squared")
-print("Distance x' : ",xp,"meters")
+print("Distance x': ",xp,"meters")
 print("Time t':", tp,"seconds")
