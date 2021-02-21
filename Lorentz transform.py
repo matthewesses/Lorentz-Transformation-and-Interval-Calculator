@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 x=10 # length for unmoving reference frame
 t=40 # time for unmoving reference frame
 y=0 #meters
@@ -47,20 +47,25 @@ elif I==0:
     print("lightike")
 print("Distance x' : ",xp,)
 print("Time t':", tp)
-#making the minkowski diagrams and worldlines as a plot
 X=x
 y1= t
 y2= tp
 a=np.linspace(-(x+4),(x+4))
 b= np.sqrt(a**2+I)
-f=plt.pyplot.plot(a,b)
-plt.pyplot.xlabel("ΔX")
-plt.pyplot.ylabel("cΔt")
-plt.pyplot.plot([0, X], [0, y1], 'go-', label=' world line 1', linewidth=2)
-plt.pyplot.plot([0, xp], [0, y2], 'b-', label=' world line 2', linewidth=2,)
-import matplotlib.pyplot as plt
-plt.plot(0,0,'ko',label='Point A'); plt.legend();
-plt.plot(X,y1,'ro',label='Point B in S'); plt.legend();
-plt.plot(xp,y2,'co',label="Point B in S'"); plt.legend();
+f=plt.plot(a,b)
+plt.xlabel("ΔX")
+plt.ylabel("cΔt")
+if I>0:
+    plt.plot([0, X], [0, y1], 'go-', label=' world line 1', linewidth=2)
+    plt.plot([0, xp], [0, y2], 'b-', label=' world line 2', linewidth=2,)
+    plt.plot(0,0,'ko',label='Point A'); plt.legend();
+    plt.plot(X,y1,'ro',label='Point B in S'); plt.legend();
+    plt.plot(xp,y2,'co',label="Point B in S'"); plt.legend();
+else:
+    plt.plot([0, X], [0, y1], 'go-', label=' world line 1', linewidth=2)
+    plt.plot([0, np.sqrt(I)], [0, 0], 'b-', label=' world line 2', linewidth=2,)
+    plt.plot(0,0,'ko',label='Point A'); plt.legend();
+    plt.plot(X,y1,'ro',label='Point B in S'); plt.legend();
+    plt.plot(np.sqrt(-I),0,'co',label="Point B in S'"); plt.legend();
 plt.grid()
 plt.show()
