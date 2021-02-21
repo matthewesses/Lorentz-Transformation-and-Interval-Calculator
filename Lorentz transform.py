@@ -47,6 +47,7 @@ elif I==0:
     print("lightike")
 print("Distance x' : ",xp,)
 print("Time t':", tp)
+#plotting the minkowski diagram
 X=x
 y1= t
 y2= tp
