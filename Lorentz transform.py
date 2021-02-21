@@ -1,13 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-x=4 # length for unmoving reference frame
+x=1 # length for unmoving reference frame
 t=1 # time for unmoving reference frame
-y=0 #meters
-z=0 #meters
+y=0 #length
+z=0 #length
 xp= None #xprime
 tp= None #tprime
-yp=y
-zp=z
+yp=y#doesn't get transformed
+zp=z#doesn't get transformed
 c=1 #length per time
 v=None #length per time
 if v==None:
@@ -47,13 +47,14 @@ elif I==0:
     print("lightike")
 print("Distance x' : ",xp,)
 print("Time t':", tp)
-#plotting the minkowski diagram and worldlines
+
+#plotting the minkowski diagram
 X=x
 y1= t
 y2= tp
 plt.xlabel("ΔX")
 plt.ylabel("cΔt")
-if I>0:
+if I>0:#for timelike
     a=np.linspace(-(x+4),(x+4))
     b= np.sqrt(a**2+I)
     f=plt.plot(a,b)
@@ -62,7 +63,7 @@ if I>0:
     plt.plot(0,0,'ko',label='Point A'); plt.legend();
     plt.plot(X,y1,'ro',label='Point B in S'); plt.legend();
     plt.plot(xp,y2,'co',label="Point B in S'"); plt.legend();
-else:
+else:#for spacelike and lightlike
     b=np.linspace(-(x+4),(x+4))
     a= np.sqrt(b**2-I)
     f=plt.plot(a,b)
@@ -71,4 +72,5 @@ else:
     plt.plot(0,0,'ko',label='Point A'); plt.legend();
     plt.plot(X,y1,'ro',label='Point B in S'); plt.legend();
     plt.plot(np.sqrt((-I)),0,'co',label="Point B in S'"); plt.legend();
-plt.grid()
+plt.grid()#grids the diagram so it looks better
+plt.show()#shoots out the diagram to a plot tab
