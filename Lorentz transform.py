@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-x=None # length for unmoving reference frame, if not given, write none
+x=None # length for unmoving reference frame,in the direction of the velocity, if not given, write none
 t=5 # time for unmoving reference frame, if not given, write none
 y=0 #length
 z=0 #length
-xp= 0 #xprime, if not given, write none
+xp= 0 #xprime,in the direction of the velocity, if not given, write none
 tp= None #tprime,if not given, write none
 yp=y#doesn't get transformed because all motion is on the x axis for this class
 zp=z#doesn't get transformed because all motion is on the x axis for this class
@@ -32,7 +32,9 @@ elif x==None and tp==None:
     tp=gamma*(t-B*x/c) #the basic t' lorentz transformation given by the class eq sheet
 else:
     print("you either have all the information that you need, or not enough information, just use a normal calculator and look at your inputs or the problem again")
-I=0-x**2+(c*t)**2-y**2-z**2 #the value for the interval   
+    exit()#exits program
+I=0-x**2+(c*t)**2-y**2-z**2 #the value for the interval 
+ 
 #prints the values
 print("Distance x: ",x)
 print("Time t:", t,)
@@ -50,27 +52,27 @@ print("Distance x' : ",xp,)
 print("Time t':", tp)
 
 #plotting the minkowski diagram
-X=x
-y1= t
-y2= tp
-plt.xlabel("ΔX")
-plt.ylabel("cΔt")
+X=x#do not know if this does anything because the library uses plots using x,y,z,t etc just for caution
+y1= t#do not know if this does anything because the library uses plots using x,y,z,t etc just for caution
+y2= tp#do not know if this does anything because the library uses plots using x,y,z,t etc just for caution
+plt.xlabel("ΔX")#names the axis
+plt.ylabel("cΔt")#names the axis
 if I>0:#for timelike
-    a=np.linspace(-(x+4),(x+4))#this is sort of 
-    b= np.sqrt(a**2+I) 
-    f=plt.plot(a,b)
-    plt.plot([0, X], [0, y1], 'go-', label=' world line 1', linewidth=2)
-    plt.plot([0, xp], [0, y2], 'b-', label=' world line 2', linewidth=2,)
-    plt.plot(0,0,'ko',label='Point A'); plt.legend();
+    a=np.linspace(-(x+4),(x+4))#this is sort of arbitrary, but I thought it was a decent range to show
+    b= np.sqrt(a**2+I) #equation for upwards half of hyperbola
+    f=plt.plot(a,b) #plots it
+    plt.plot([0, X], [0, y1], 'go-', label=' world line 1', linewidth=2) #world line 1
+    plt.plot([0, xp], [0, y2], 'b-', label=' world line 2', linewidth=2,) #world line 2
+    plt.plot(0,0,'ko',label='Point A'); plt.legend();#origin
     plt.plot(X,y1,'ro',label='Point B in S'); plt.legend();
     plt.plot(xp,y2,'co',label="Point B in S'"); plt.legend();
 else:#for spacelike and lightlike
-    b=np.linspace(-(x+4),(x+4))
-    a= np.sqrt(b**2-I)
-    f=plt.plot(a,b)
-    plt.plot([0, X], [0, y1], 'go-', label=' world line 1', linewidth=2)
-    plt.plot([0, np.sqrt((-I))], [0, 0], 'b-', label=' world line 2', linewidth=2,)
-    plt.plot(0,0,'ko',label='Point A'); plt.legend();
+    b=np.linspace(-(x+4),(x+4))#this is sort of arbitrary, but I thought it was a decent range to show
+    a= np.sqrt(b**2-I)#sideways facing, the one to the right though 
+    f=plt.plot(a,b)#plots it
+    plt.plot([0, X], [0, y1], 'go-', label=' world line 1', linewidth=2)#plots worldline 1
+    plt.plot([0, np.sqrt((-I))], [0, 0], 'b-', label=' world line 2', linewidth=2,)#world line 2
+    plt.plot(0,0,'ko',label='Point A'); plt.legend();#where the origin is on the diagram
     plt.plot(X,y1,'ro',label='Point B in S'); plt.legend();
     plt.plot(np.sqrt((-I)),0,'co',label="Point B in S'"); plt.legend();
 plt.grid()
